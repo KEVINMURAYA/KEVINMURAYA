@@ -1,0 +1,712 @@
+:root {
+            --primary-color: #1806e1;    /* A calming green, example primary */
+            --secondary-color: #5c0178;  /* A soft purple, example secondary */
+            --accent-color: #7702cb;     /* A warm yellow, example accent for highlights/buttons */
+            --background-light: hsl(213, 35%, 94%); /* Near white background */
+            --background-section: #FFFFFF; /* Slightly off-white for sections */
+            --text-dark: #0541ce;        /* Dark blue-grey for main text */
+            --text-light: #8e0fab;       /* Lighter blue-grey for secondary text */
+            --border-color: #ECEFF1;     /* Light grey border */
+            --card-bg: #FFFFFF;          /* White card background */
+            --hero-bg-color:#f7fcfc;    /* Light blue-grey for hero section background */
+            --faq-bg-color: #eff0f0f7;     /* Slightly different light blue for FAQ */
+            --footer-bg-color: #0a0a95;  /* Dark blue-grey for footer */
+
+            /* Spacing variables for consistent layout */
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 30px;
+            --spacing-lg: 60px;
+            --spacing-xl: 100px; /* For large section padding */
+            --spacing-xxl: 120px; /* Even larger for hero/main sections */
+
+            /* Font sizes (adjust based on visual inspection of mockup) */
+            --font-size-base: 16px;
+            --font-size-h1: 3.8rem; /* "Support for Your Mental Well-being" */
+            --font-size-h2: 2.5rem; /* Section Titles like "We Help You Prioritize..." */
+            --font-size-h3: 1.5rem; /* Card titles */
+            --font-size-p: 1.125rem; /* Body text */
+            --font-size-small: 0.9rem; /* Smaller text like client names, form labels */
+        }
+
+        /* Universal box-sizing for consistent layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Body styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Apply chosen font */
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Container for consistent content width */
+        .container {
+            max-width: 1100px; /* Matches the content width observed in the PDF */
+            margin: 0 auto;
+            padding: 0 var(--spacing-md); /* Consistent side padding */
+        }
+
+        /* Section padding for vertical rhythm */
+        section {
+            padding: var(--spacing-xl) 0; /* Generous vertical spacing between sections */
+            position: relative; /* For potential background graphics */
+        }
+
+        /* Styles for section descriptions */
+        .section-description {
+            font-size: var(--font-size-p);
+            color: var(--text-light);
+            margin-top: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            text-align: center; /* Centered under main section headings */
+            max-width: 800px; /* Constrain width for readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Heading styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        h1 { font-size: var(--font-size-h1); }
+        h2 { font-size: var(--font-size-h2); text-align: center; } /* Most section titles are centered */
+        h3 { font-size: var(--font-size-h3); }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px; /* Generous padding for CTA buttons */
+            border-radius: 8px; /* Slightly rounded corners */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+
+        .btn-primary:hover {
+            background-color: #520a8a; /* Slightly darker green */
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-size: var(--font-size-base);
+        }
+
+        .btn-link:hover {
+            color: #62057e; /* Darker green on hover */
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--card-bg); /* White background */
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+            position: sticky; /* Fixed header on scroll */
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure it stays on top */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-md); /* Spacing between nav items */
+        }
+
+        .nav-links li {
+            position: relative; /* For underline effect */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding-bottom: 5px; /* Space for underline */
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle-btn {
+            display: none; /* Hidden on LG desktop. Will be shown on SM/MD */
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            padding: 5px;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--hero-bg-color); /* Light background color from mockup */
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden; /* To contain background graphics */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 650px; /* Ensure sufficient height for the section */
+        }
+
+        .hero-section .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-lg); /* Spacing between text and graphic */
+            position: relative;
+            z-index: 1; /* Ensure content is above background graphics */
+            text-align: left; /* Content aligns left */
+        }
+
+        .hero-content {
+            flex: 1.2; /* Content column takes more space */
+            max-width: 650px; /* Max width for readability */
+        }
+
+        .hero-graphic {
+            flex: 0.8; /* Graphic column takes less space */
+            max-width: 550px; /* Control image size */
+            text-align: right; /* Align graphic to the right */
+        }
+
+        .hero-graphic img {
+            width: 100%;
+            height: auto;
+            display: block; /* Remove extra space below image */
+        }
+
+        .hero-section h1 {
+            font-size: var(--font-size-h1);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        .hero-section p {
+            font-size: var(--font-size-p);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-light);
+        }
+
+        /* Placeholder for background elements in Hero section */
+        /* You will need to create or source an image like 'hero-bg-elements.png'
+           that contains the abstract shapes/faces from the mockup. */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/images/hero-bg-elements.png') no-repeat center center / cover;
+            opacity: 0.15; /* Adjust opacity to match softness in mockup */
+            z-index: 0;
+            pointer-events: none; /* Ensure it doesn't interfere with clicks */
+        }
+
+        /* --- Two-Column Sections (e.g., We Help You, Community, FAQ, Contact) --- */
+        .two-column-section .container,
+        .faq-section .container,
+        .contact-section .container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl); /* Larger gap for these sections */
+        }
+
+        .two-column-section .content-column,
+        .faq-section .content-column,
+        .contact-section .content-column {
+            flex: 1; /* Both columns take equal space */
+        }
+
+        .image-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-column img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* If images have rounded corners */
+            display: block; /* Remove extra space below image */
+            margin: 0 auto; /* Center image if it's smaller than column */
+        }
+
+        /* For sections where image is on the left and text on right (like Community) */
+        .two-column-section.reversed-columns .container {
+            flex-direction: row-reverse;
+        }
+
+        .two-column-section h2,
+        .faq-section h2,
+        .contact-section h2 {
+            text-align: left; /* These section titles are left-aligned in their column */
+            margin-bottom: var(--spacing-md);
+        }
+        .two-column-section p,
+        .faq-section .section-description,
+        .contact-section p {
+            font-size: var(--font-size-p);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-light);
+        }
+        .two-column-section .btn-primary {
+            margin-top: var(--spacing-sm); /* Space above button */
+        }
+
+
+        /* --- Card Sections (Your Path, Resources) --- */
+        .cards-section {
+            background-color: var(--background-section); /* Slightly different background for these sections */
+        }
+        .cards-section h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row for LG, equal width */
+            gap: var(--spacing-md); /* Consistent spacing between cards */
+            margin-top: var(--spacing-lg); /* Space below section description */
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px; /* Rounded corners as per mockup */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Prominent shadow for cards */
+            padding: var(--spacing-lg);
+            text-align: left; /* Content alignment within card */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to the left inside card */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 320px; /* Ensure consistent card height for layout */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Subtle lift effect on hover */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            width: 70px; /* Size for circular icons */
+            height: 70px;
+            background-color: #FEEEDD; /* Light orange/yellow background for icons (example) */
+            border-radius: 50%; /* Circular shape */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Small shadow for icon circle */
+        }
+
+        .card-icon img {
+            width: 60%; /* Adjust icon size within the circle */
+            height: auto;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: var(--font-size-h3);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card p {
+            font-size: var(--font-size-base);
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1; /* Make paragraphs take up available space to push "Learn More" to bottom */
+        }
+
+        .card .btn-link {
+            align-self: flex-start; /* Ensure link stays left-aligned */
+        }
+
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background-color: var(--background-light);
+        }
+        .testimonials-section h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.6fr 1.2fr; /* Two larger text columns, smaller central graphic column */
+            gap: var(--spacing-lg); /* Spacing between testimonials and graphic */
+            align-items: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .testimonial-text {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: var(--spacing-lg);
+            text-align: left;
+            font-style: italic;
+            font-size: var(--font-size-base);
+            color: var(--text-dark);
+            position: relative;
+            min-height: 200px; /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Large quote mark for visual effect */
+        .testimonial-text::before {
+            content: '“';
+            font-family: serif; /* Use a serif font for the quote */
+            font-size: 8rem; /* Large size */
+            color: rgba(0,0,0,0.03); /* Very light, subtle color */
+            position: absolute;
+            top: 0px;
+            left: 15px;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        .testimonial-text p {
+            margin-bottom: var(--spacing-sm);
+            position: relative; /* Ensure text is above pseudo-element */
+            z-index: 1;
+            padding-top: 15px; /* Adjust for quote mark */
+        }
+
+        .client-name {
+            font-weight: 600;
+            font-style: normal;
+            color: var(--text-dark);
+            font-size: var(--font-size-small);
+            text-align: right;
+            margin-top: auto; /* Push to bottom */
+        }
+
+        .testimonial-graphic {
+            text-align: center;
+        }
+        .testimonial-graphic img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        /* --- Partners Section --- */    
+        .partners-section {
+            padding: var(--spacing-lg) 0; /* Slightly less vertical padding */
+            background-color: var(--background-section);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .partners-section .container {
+            display: flex;
+            justify-content: space-around; /* Distribute logos evenly */
+            align-items: center;
+            flex-wrap: wrap; /* Allow logos to wrap on smaller screens */
+            gap: var(--spacing-md); /* Spacing between logos */
+        }
+
+        .partner-logo img {
+            max-height: 45px; /* Adjust logo size */
+            opacity: 0.6;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .partner-logo img:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+
+        /* --- FAQ Section --- */
+        .faq-section {
+            background-color: var(--faq-bg-color); /* Light blue background from mockup */
+        }
+        .faq-section .container {
+            align-items: flex-start; /* Align image and accordion to the top */
+        }
+
+        .faq-section .content-column {
+            padding-left: var(--spacing-lg); /* Add some space if graphic is close */
+        }
+
+        .faq-accordion {
+            width: 100%;
+            margin-top: var(--spacing-lg); /* Space below section description */
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--spacing-sm) 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: var(--spacing-xs) 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+            color: var(--primary-color); /* Plus icon color */
+        }
+
+        .faq-item.active .toggle-icon {
+            transform: rotate(45deg); /* Change '+' to 'x' or rotate to indicate open */
+        }
+
+        .faq-answer {
+            padding-top: var(--spacing-sm);
+            font-size: var(--font-size-small);
+            color: var(--text-light);
+            max-height: 0; /* Hidden by default */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 100px; /* Sufficient height for most answers, adjust as needed */
+            padding-top: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            background-color: var(--card-bg);
+        }
+
+        .contact-details {
+            padding-right: var(--spacing-lg);
+        }
+
+        .contact-details h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-details p {
+            font-size: var(--font-size-p);
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-light);
+        }
+
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-details a:hover {
+            color: #7707af;
+        }
+
+        .contact-details .response-time {
+            font-size: var(--font-size-small);
+            margin-top: var(--spacing-md);
+            color: var(--text-light);
+        }
+
+        .contact-form h3 {
+            margin-bottom: var(--spacing-md);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            font-size: var(--font-size-small);
+            color: var(--text-dark);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: var(--font-size-base);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(91, 140, 90, 0.2); /* Light primary color glow */
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px; /* Adjust height for message box */
+        }
+
+        .contact-form button[type="submit"] {
+            width: auto; /* Not full width */
+            padding: 15px 40px; /* Larger button */
+            font-size: var(--font-size-base);
+            margin-top: var(--spacing-sm);
+        }
+
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--footer-bg-color); /* Dark blue-grey background */
+            color: #fff;
+            padding: var(--spacing-xl) 0 var(--spacing-md) 0; /* More padding top, less bottom */
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr); /* Larger first column for branding, 3 equal for links */
+            gap: var(--spacing-lg);
+            text-align: left;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-section h4 {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-base);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-branding p {
+            font-size: var(--font-size-small);
+            color: #ccc;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: var(--font-size-small);
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .social-icons a img {
+            width: 24px; /* Size for social icons */
+            height: 24px;
+            /* If your SVG icons are dark, you might need to invert their color to white */
+            /* filter: invert(100%); */
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-sm);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: var(--font-size-small);
+            color: #aaa;
+        }
