@@ -1,18 +1,19 @@
+/* --- Global Variables (already well-defined) --- */
 :root {
-    --primary-color: #1806e1; /* A calming green, example primary */
-    --secondary-color: #5c0178; /* A soft purple, example secondary */
-    --accent-color: #7702cb; /* A warm yellow, example accent for highlights/buttons */
-    --background-light: hsl(213, 35%, 94%); /* Near white background */
-    --background-section: #FFFFFF; /* Slightly off-white for sections */
-    --text-dark: #0541ce; /* Dark blue-grey for main text */
-    --text-light: #8e0fab; /* Lighter blue-grey for secondary text */
-    --border-color: #ECEFF1; /* Light grey border */
-    --card-bg: #FFFFFF; /* White card background */
-    --hero-bg-color:#f7fcfc; /* Light blue-grey for hero section background */
-    --faq-bg-color: #eff0f0f7; /* Slightly different light blue for FAQ */
-    --footer-bg-color: #0a0a95; /* Dark blue-grey for footer */
+    --primary-color: #1806e1;
+    --secondary-color: #5c0178;
+    --accent-color: #7702cb;
+    --background-light: hsl(213, 35%, 94%);
+    --background-section: #FFFFFF;
+    --text-dark: #0541ce;
+    --text-light: #8e0fab;
+    --border-color: #ECEFF1;
+    --card-bg: #FFFFFF;
+    --hero-bg-color:#f7fcfc;
+    --faq-bg-color: #eff0f0f7;
+    --footer-bg-color: #0a0a95;
 
-    /* Spacing variables for consistent layout */
+    /* Spacing variables for consistent layout - Adjust these based on visual flow */
     --spacing-xs: 8px;
     --spacing-sm: 16px;
     --spacing-md: 30px;
@@ -50,9 +51,15 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Container for consistent content width */
+/* Base Container styles - always fluid */
+.site-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md); /* Use variable for padding */
+}
+
 .container {
-    max-width: 1100px; /* Matches the content width observed in the PDF */
+    max-width: 1100px; /* Consistent content width */
     margin: 0 auto;
     padding: 0 var(--spacing-md); /* Consistent side padding */
 }
@@ -60,7 +67,7 @@ body {
 /* Section padding for vertical rhythm */
 section {
     padding: var(--spacing-xl) 0; /* Generous vertical spacing between sections */
-    position: relative; /* For potential background graphics */
+    position: relative;
 }
 
 /* Styles for section descriptions */
@@ -69,8 +76,8 @@ section {
     color: var(--text-light);
     margin-top: var(--spacing-sm);
     margin-bottom: var(--spacing-lg);
-    text-align: center; /* Centered under main section headings */
-    max-width: 800px; /* Constrain width for readability */
+    text-align: center;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -83,14 +90,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); text-align: center; } /* Most section titles are centered */
+h2 { font-size: var(--font-size-h2); text-align: center; } /* Most section titles are centered by default */
 h3 { font-size: var(--font-size-h3); }
 
 /* Button styles */
 .btn {
     display: inline-block;
-    padding: 15px 30px; /* Generous padding for CTA buttons */
-    border-radius: 8px; /* Slightly rounded corners */
+    padding: 15px 30px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     font-size: var(--font-size-base);
@@ -103,12 +110,12 @@ h3 { font-size: var(--font-size-h3); }
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover {
-    background-color: #520a8a; /* Slightly darker green */
-    transform: translateY(-3px); /* Lift effect on hover */
+    background-color: #520a8a;
+    transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
@@ -121,18 +128,18 @@ h3 { font-size: var(--font-size-h3); }
 }
 
 .btn-link:hover {
-    color: #62057e; /* Darker green on hover */
+    color: #62057e;
 }
 
 /* --- Header & Navigation --- */
 .main-header {
-    background-color: var(--card-bg); /* White background */
+    background-color: var(--card-bg);
     padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
-    position: sticky; /* Fixed header on scroll */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensure it stays on top */
+    z-index: 1000;
 }
 
 .navbar {
@@ -151,18 +158,18 @@ h3 { font-size: var(--font-size-h3); }
 .nav-links {
     list-style: none;
     display: flex;
-    gap: var(--spacing-md); /* Spacing between nav items */
+    gap: var(--spacing-md);
 }
 
 .nav-links li {
-    position: relative; /* For underline effect */
+    position: relative;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
-    padding-bottom: 5px; /* Space for underline */
+    padding-bottom: 5px;
 }
 
 .nav-links a::after {
@@ -181,7 +188,7 @@ h3 { font-size: var(--font-size-h3); }
 }
 
 .nav-toggle-btn {
-    display: none; /* Hidden on LG desktop. Will be shown on SM/MD */
+    display: none; /* Hidden on desktop, shown on smaller screens */
     background: none;
     border: none;
     cursor: pointer;
@@ -191,42 +198,74 @@ h3 { font-size: var(--font-size-h3); }
 }
 
 /* --- Hero Section --- */
-.hero-section {
-    background-color: var(--hero-bg-color); /* Light background color from mockup */
-    padding: var(--spacing-xxl) 0;
-    overflow: hidden; /* To contain background graphics */
+/* Your existing #home.container styles for a card-like home section */
+#home.container {
+    background-color: var(--card-bg);
+    border-radius: 45px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    max-width: 900px;
+    margin: var(--spacing-lg) auto;
+    text-align: center;
     position: relative;
+}
+
+.logo-bottom-left {
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    width: 200px;
+    height: auto;
+}
+
+#home.container h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+#home.container p {
+    font-size: var(--font-size-p);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+#home.container .btn {
+    margin-top: var(--spacing-sm);
+}
+
+
+/* General Hero Section with content & graphic columns */
+.hero-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--hero-bg-color); /* If hero has a specific background */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 650px; /* Ensure sufficient height for the section */
+    align-items: center; /* Vertically center content */
+    min-height: 600px; /* Ensure sufficient height */
 }
 
 .hero-section .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-lg); /* Spacing between text and graphic */
-    position: relative;
-    z-index: 1; /* Ensure content is above background graphics */
-    text-align: left; /* Content aligns left */
+    gap: var(--spacing-lg); /* Space between content and graphic */
 }
 
 .hero-content {
     flex: 1.2; /* Content column takes more space */
-    max-width: 650px; /* Max width for readability */
+    max-width: 650px;
+    text-align: left;
 }
 
 .hero-graphic {
     flex: 0.8; /* Graphic column takes less space */
-    max-width: 550px; /* Control image size */
-    text-align: right; /* Align graphic to the right */
+    max-width: 550px;
+    text-align: right;
 }
 
 .hero-graphic img {
     width: 100%;
     height: auto;
-    display: block; /* Remove extra space below image */
+    display: block;
 }
 
 .hero-section h1 {
@@ -241,13 +280,12 @@ h3 { font-size: var(--font-size-h3); }
     color: var(--text-light);
 }
 
-.hero-buttons { /* Added a wrapper for buttons to style them on mobile */
+.hero-buttons {
     display: flex;
     gap: var(--spacing-md);
-    justify-content: flex-start; /* Align buttons left on desktop */
+    justify-content: flex-start;
 }
 
-/* Placeholder for background elements in Hero section */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -256,24 +294,69 @@ h3 { font-size: var(--font-size-h3); }
     width: 100%;
     height: 100%;
     background: url('assets/images/hero-bg-elements.png') no-repeat center center / cover;
-    opacity: 0.15; /* Adjust opacity to match softness in mockup */
+    opacity: 0.15;
     z-index: 0;
-    pointer-events: none; /* Ensure it doesn't interfere with clicks */
+    pointer-events: none;
+}
+
+/* --- About Section --- */
+.about-section h2 {
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.about-section p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-section .container {
+    background-color: var(--background-section);
+    padding: var(--spacing-xl);
+    border-radius: 45px;
+    box-shadow: 0 4px 15px rgba(36, 6, 235, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: var(--spacing-lg) auto;
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+}
+
+/* Services section header (same as #home.container header styles) */
+#services.services-container h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    text-align: center;
+}
+
+#services.services-container p {
+    font-size: var(--font-size-p);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
 }
 
 /* --- Two-Column Sections (e.g., We Help You, Community, FAQ, Contact) --- */
 .two-column-section .container,
-.faq-section .container,
-.contact-section .container {
+.faq-section .container:not(.faq-accordion), /* Exclude FAQ accordion itself */
+.contact-section .contact-container { /* Specific class for contact wrapper */
     display: flex;
     align-items: center;
-    gap: var(--spacing-xl); /* Larger gap for these sections */
+    gap: var(--spacing-xl);
 }
 
 .two-column-section .content-column,
 .faq-section .content-column,
-.contact-section .content-column {
-    flex: 1; /* Both columns take equal space */
+.contact-section .contact-details { /* Specific class for contact details */
+    flex: 1;
 }
 
 .image-column {
@@ -284,81 +367,87 @@ h3 { font-size: var(--font-size-h3); }
 .image-column img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px; /* If images have rounded corners */
-    display: block; /* Remove extra space below image */
-    margin: 0 auto; /* Center image if it's smaller than column */
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
-/* For sections where image is on the left and text on right (like Community) */
 .two-column-section.reversed-columns .container {
     flex-direction: row-reverse;
 }
 
 .two-column-section h2,
-.faq-section h2,
-.contact-section h2 {
-    text-align: left; /* These section titles are left-aligned in their column */
+.faq-section .content-column h2, /* Specificity for FAQ h2 */
+.contact-section .contact-details h2 { /* Specificity for Contact h2 */
+    text-align: left;
     margin-bottom: var(--spacing-md);
 }
+
 .two-column-section p,
 .faq-section .section-description,
-.contact-section p {
+.contact-section .contact-details p {
     font-size: var(--font-size-p);
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
 }
-.two-column-section .btn-primary {
-    margin-top: var(--spacing-sm); /* Space above button */
-}
 
+.two-column-section .btn-primary {
+    margin-top: var(--spacing-sm);
+}
 
 /* --- Card Sections (Your Path, Resources) --- */
 .cards-section {
-    background-color: var(--background-section); /* Slightly different background for these sections */
+    background-color: var(--background-section);
 }
 .cards-section h2 {
     margin-bottom: var(--spacing-sm);
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row for LG, equal width */
-    gap: var(--spacing-md); /* Consistent spacing between cards */
-    margin-top: var(--spacing-lg); /* Space below section description */
+    display: grid; /* Use grid for better control over card layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible columns */
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.service-card {
+    max-width: 1200px; /* This seems to be a wrapper for cards, not a single card */
+    margin: 0 auto var(--spacing-lg);
 }
 
 .card {
     background-color: var(--card-bg);
-    border-radius: 12px; /* Rounded corners as per mockup */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Prominent shadow for cards */
+    border-radius: 45px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     padding: var(--spacing-lg);
-    text-align: left; /* Content alignment within card */
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align content to the left inside card */
+    align-items: flex-start;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 320px; /* Ensure consistent card height for layout */
+    min-height: 320px; /* Ensure consistent card height for desktop */
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Subtle lift effect on hover */
+    transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
 .card-icon {
-    width: 70px; /* Size for circular icons */
+    width: 70px;
     height: 70px;
-    background-color: #FEEEDD; /* Light orange/yellow background for icons (example) */
-    border-radius: 50%; /* Circular shape */
+    background-color: #FEEEDD;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Small shadow for icon circle */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .card-icon img {
-    width: 60%; /* Adjust icon size within the circle */
+    width: 60%;
     height: auto;
     display: block;
 }
@@ -372,132 +461,300 @@ h3 { font-size: var(--font-size-h3); }
     font-size: var(--font-size-base);
     color: var(--text-light);
     margin-bottom: var(--spacing-md);
-    flex-grow: 1; /* Make paragraphs take up available space to push "Learn More" to bottom */
+    flex-grow: 1;
 }
 
 .card .btn-link {
-    align-self: flex-start; /* Ensure link stays left-aligned */
+    align-self: flex-start;
 }
-
 
 /* --- Testimonials Section --- */
 .testimonials-section {
-    background-color: var(--background-light);
-}
-.testimonials-section h2 {
-    margin-bottom: var(--spacing-sm);
-}
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.6fr 1.2fr; /* Two larger text columns, smaller central graphic column */
-    gap: var(--spacing-lg); /* Spacing between testimonials and graphic */
-    align-items: center;
-    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl) 0; /* Use spacing variable */
+    max-width: 1100px; /* Use max-width to contain testimonials section */
+    margin:0 auto;
 }
 
-.testimonial-text {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    padding: var(--spacing-lg);
-    text-align: left;
-    font-style: italic;
-    font-size: var(--font-size-base);
-    color: var(--text-dark);
-    position: relative;
-    min-height: 200px; /* Ensure consistent height */
+.testimonial-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg); /* Use spacing variable */
+    align-items: flex-start;
 }
 
-/* Large quote mark for visual effect */
-.testimonial-text::before {
-    content: '“';
-    font-family: serif; /* Use a serif font for the quote */
-    font-size: 8rem; /* Large size */
-    color: rgba(0,0,0,0.03); /* Very light, subtle color */
-    position: absolute;
-    top: 0px;
-    left: 15px;
-    z-index: 0;
-    line-height: 1;
+.testimonial-info {
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+    text-align: left;
 }
 
-.testimonial-text p {
-    margin-bottom: var(--spacing-sm);
-    position: relative; /* Ensure text is above pseudo-element */
-    z-index: 1;
-    padding-top: 15px; /* Adjust for quote mark */
+.section-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #1004e7;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.testimonial-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #0c03b7eb;
+    line-height: 1.2;
+    text-align: left;
+}
+
+/* Override .section-description for this section to be left-aligned */
+.testimonials-section .section-description {
+    color: var(--text-light); /* Using text-light for consistency */
+    margin-bottom: 1.5rem;
+    text-align: left; /* Ensure it's left-aligned here */
+    max-width: none; /* Remove max-width if it's constraining it from expanding */
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.testimonial-nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.nav-btn {
+    background: #0317ef;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: #ca05f6;
+}
+
+.testimonial-cards-wrapper {
+    flex: 2;
+    display: flex;
+    gap: var(--spacing-md); /* Use spacing variable */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    min-width: 300px;
+}
+
+.testimonial-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 2rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.light-bg {
+    background: #1a25ef;
+    color: #fff;
+    height: 300px; /* Consider min-height instead of fixed height for content flexibility */
+}
+
+.dark-bg {
+    background: #7c01a9;
+    color: #fff;
+    height: 300px; /* Consider min-height instead of fixed height for content flexibility */
 }
 
 .client-name {
+    margin-top: 8rem;
     font-weight: 600;
-    font-style: normal;
-    color: var(--text-dark);
-    font-size: var(--font-size-small);
-    text-align: right;
-    margin-top: auto; /* Push to bottom */
+    opacity: 0.9;
 }
-
-.testimonial-graphic {
-    text-align: center;
-}
-.testimonial-graphic img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
 
 /* --- Partners Section --- */
 .partners-section {
-    padding: var(--spacing-lg) 0; /* Slightly less vertical padding */
-    background-color: var(--background-section);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-xl) 0; /* Use spacing variable */
+    text-align: center;
 }
-.partners-section .container {
+
+.partners-section .section-subtitle {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #0f03bb;
+    text-align: center; /* Ensure this remains centered */
+}
+
+.partner-logos-grid {
     display: flex;
-    justify-content: space-around; /* Distribute logos evenly */
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Allow logos to wrap on smaller screens */
-    gap: var(--spacing-md); /* Spacing between logos */
+    gap: var(--spacing-md); /* Use spacing variable */
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.partner-logo {
+    flex: 1 1 120px; /* Flex-grow, flex-shrink, flex-basis for flexible sizing */
+    max-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .partner-logo img {
-    max-height: 45px; /* Adjust logo size */
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .partner-logo img:hover {
     opacity: 1;
-    transform: translateY(-3px);
+    filter: grayscale(0%);
 }
 
+/* --- Resources Section --- */
+.resources-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resources-header .section-subtitle {
+    color: #3a05e5;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.resources-header h2 {
+    font-size: 2.5rem;
+    color: #0b02b0;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.resources-header .section-description {
+    color: var(--text-light); /* Use variable for consistency */
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* --- Community Section --- */
+#community .container {
+    background-color: #ffffff;
+    border-radius: 45px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    max-width: 1000px;
+    height: auto;
+    margin: var(--spacing-lg) auto;
+}
+
+#community .image-column img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+#community .content-column {
+    flex: 1;
+}
+
+#community h2 {
+    font-size: var(--font-size-h2);
+    margin: 0 0 var(--spacing-sm);
+    text-align: left;
+}
+
+#community p {
+    font-size: var(--font-size-p);
+    margin: 0 0 var(--spacing-md);
+}
+
+#community .btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+#community .btn:hover {
+    background-color: #520a8a;
+}
 
 /* --- FAQ Section --- */
 .faq-section {
-    background-color: var(--faq-bg-color); /* Light blue background from mockup */
+    background-color: var(--faq-bg-color);
+    padding: var(--spacing-xl) 0; /* Consistent vertical padding */
 }
+
+/* Adjust the container for FAQ to be a flex container with two columns */
 .faq-section .container {
-    align-items: flex-start; /* Align image and accordion to the top */
+    display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap */
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-md); /* Consistent horizontal padding */
 }
 
 .faq-section .content-column {
-    padding-left: var(--spacing-lg); /* Add some space if graphic is close */
+    flex: 1;
+    min-width: 300px; /* Ensure content column doesn't get too small */
+    padding: 0; /* Removed conflicting padding */
+}
+
+.faq-section .section-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #0703ee;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-align: left;
 }
 
 .faq-accordion {
     width: 100%;
-    margin-top: var(--spacing-lg); /* Space below section description */
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 900px; /* Keep max width for accordion */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
 }
 
 .faq-item {
-    border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-sm) 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.faq-item:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .faq-question {
@@ -508,7 +765,7 @@ h3 { font-size: var(--font-size-h3); }
     font-size: var(--font-size-base);
     color: var(--text-dark);
     cursor: pointer;
-    padding: var(--spacing-xs) 0;
+    padding: 0.8rem 1rem;
     transition: color 0.3s ease;
 }
 
@@ -520,212 +777,353 @@ h3 { font-size: var(--font-size-h3); }
     font-size: 1.5rem;
     font-weight: 400;
     transition: transform 0.3s ease;
-    color: var(--primary-color); /* Plus icon color */
+    color: var(--primary-color);
 }
 
 .faq-item.active .toggle-icon {
-    transform: rotate(45deg); /* Change '+' to 'x' or rotate to indicate open */
+    transform: rotate(45deg);
 }
 
 .faq-answer {
-    padding-top: var(--spacing-sm);
     font-size: var(--font-size-small);
     color: var(--text-light);
-    max-height: 0; /* Hidden by default */
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+    display: block;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 100px; /* Sufficient height for most answers, adjust as needed */
+    max-height: 200px;
     padding-top: var(--spacing-sm);
     padding-bottom: var(--spacing-sm);
 }
 
+.faq-section .image-column {
+    flex: 1; /* Allow image column to take available space */
+    min-width: 250px; /* Prevent image column from getting too small */
+    padding: 0; /* Remove conflicting padding */
+    text-align: center; /* Center image within its column */
+}
+
+.faq-section .image-column img {
+    margin-top: 0; /* Remove top margin from image */
+    max-width: 100%;
+}
+
 /* --- Contact Section --- */
-.contact-section {
-    background-color: var(--card-bg);
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md); /* Use variable for consistency */
+    background-color: #ffffff;
+    padding: var(--spacing-lg); /* Use variable for consistency */
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 20px rgba(27, 1, 195, 0.08);
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: flex-start;
 }
 
 .contact-details {
-    padding-right: var(--spacing-lg);
+    flex: 1;
+    min-width: 280px;
+    padding-right: var(--spacing-md); /* Space before the form */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .contact-details h2 {
-    margin-bottom: var(--spacing-md);
+    font-size: 1.8rem;
+    color: #0419d6;
+    margin-bottom: 1.5rem;
+    text-align: left; /* Ensure it's left aligned within its column */
 }
 
 .contact-details p {
-    font-size: var(--font-size-p);
-    margin-bottom: var(--spacing-xs);
-    color: var(--text-light);
+    font-size: 1rem;
+    color: #9902c7;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
 }
 
-.contact-details a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.contact-details a:hover {
-    color: #7707af;
-}
-
-.contact-details .response-time {
-    font-size: var(--font-size-small);
-    margin-top: var(--spacing-md);
-    color: var(--text-light);
-}
-
-.contact-form h3 {
-    margin-bottom: var(--spacing-md);
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: var(--spacing-sm);
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
-    font-size: var(--font-size-small);
-    color: var(--text-dark);
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: var(--font-size-base);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: var(--text-light);
-    opacity: 0.7;
-}
-
-.contact-form input[type="text"]:focus,
-.contact-form input[type="email"]:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(91, 140, 90, 0.2); /* Light primary color glow */
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px; /* Adjust height for message box */
-}
-
-.contact-form button[type="submit"] {
-    width: auto; /* Not full width */
-    padding: 15px 40px; /* Larger button */
-    font-size: var(--font-size-base);
-    margin-top: var(--spacing-sm);
-}
-
-
-/* --- Footer --- */
-.main-footer {
-    background-color: var(--footer-bg-color); /* Dark blue-grey background */
-    color: #fff;
-    padding: var(--spacing-xl) 0 var(--spacing-md) 0; /* More padding top, less bottom */
-    text-align: center;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr repeat(3, 1fr); /* Larger first column for branding, 3 equal for links */
-    gap: var(--spacing-lg);
-    text-align: left;
-    margin-bottom: var(--spacing-xl);
-}
-
-.footer-section h4 {
-    margin-bottom: var(--spacing-md);
-    font-size: var(--font-size-base);
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.footer-logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: var(--spacing-sm);
-}
-
-.footer-branding p {
-    font-size: var(--font-size-small);
-    color: #ccc;
-    margin-bottom: var(--spacing-md);
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: var(--spacing-xs);
-}
-
-.footer-section ul li a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: var(--font-size-small);
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: var(--accent-color);
+.contact-details strong {
+    color: #07037e;
 }
 
 .social-icons {
     display: flex;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-sm);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 9rem;
 }
 
-.social-icons a img {
-    width: 24px; /* Size for social icons */
+.social-icon img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon img:hover {
+    opacity: 1;
+}
+
+.response-time {
+    font-size: 0.9rem;
+    color: #7b03b8;
+    font-style: italic;
+    margin-top: auto;
+}
+
+.contact-form-wrapper {
+    flex: 1.5;
+    min-width: 320px;
+    background-color: #fdbefd;
+    padding: 2.5rem;
+    border-radius: 1rem;
+}
+
+.contact-form-wrapper h3 {
+    font-size: 1.5rem;
+    color: #5050fb;
+    margin-bottom: 2rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #0641f4;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #c52ce7;
+}
+
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #8106ae;
+}
+
+/* Visually hidden labels for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.send-message-btn {
+    background-color: #040be1;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.send-message-btn:hover {
+    background-color: #5a0181;
+    transform: translateY(-2px);
+}
+
+/* --- Footer --- */
+.sitemap-and-cta-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg); /* Use spacing variable */
+    max-width: 1200px;
+    margin: var(--spacing-xl) auto; /* Use spacing variable */
+    padding: 0 var(--spacing-md); /* Consistent padding */
+    align-items: stretch; /* Stretch items to fill height */
+}
+
+.sitemap-links-block {
+    flex: 2;
+    min-width: 450px; /* Minimum width before wrapping */
+    background-color: #ffffff;
+    padding: var(--spacing-lg); /* Use spacing variable */
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 20px rgba(31, 7, 208, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+
+.sitemap-links-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-md);
+    padding-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.sitemap-branding .sitemap-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0420dc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.sitemap-branding p {
+    font-size: 0.9rem;
+    color: #9801af;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.sitemap-links-section-item h4 {
+    font-size: 1.1rem;
+    color: #13019b;
+    margin-bottom: 1rem;
+}
+
+.sitemap-links-section-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-links-section-item ul li {
+    margin-bottom: 0.6rem;
+}
+
+.sitemap-links-section-item ul li a {
+    font-size: 0.95rem;
+    color: #0624e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sitemap-links-section-item ul li a:hover {
+    color: #a204e1;
+}
+
+.sitemap-links-section-item .social-icons {
+    display: flex;
+    flex-direction: column; /* Keep stacked on desktop for footer */
+    gap: 0.8rem;
+    margin-top: 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.sitemap-links-section-item .social-icons img {
+    width: 24px;
     height: 24px;
-    /* If your SVG icons are dark, you might need to invert their color to white */
-    /* filter: invert(100%); */
-    transition: transform 0.2s ease;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-.social-icons a:hover img {
-    transform: translateY(-3px);
+.sitemap-links-section-item .social-icons img:hover {
+    opacity: 1;
 }
 
-.footer-bottom {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: var(--font-size-small);
-    color: #aaa;
+.sitemap-copyright {
+    text-align: left;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: auto;
 }
 
+.cta-block {
+    flex: 1;
+    min-width: 300px;
+    background-color: #0231b2;
+    padding: var(--spacing-lg) var(--spacing-md); /* Use spacing variables */
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
 
+.cta-block h2 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.cta-button {
+    background-color: #ffffff;
+    color: #640298;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #500263;
+    transform: translateY(-2px);
+}
+
+.cta-graphic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('assets/graphics/cta-flowers-rainbow.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+    opacity: 0.7;
+}
+
+---
+
+## Responsive Adjustments
+
+```css
 /* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 
-/* --- Medium Devices (Tablets and smaller desktops) --- */
-/* Target screens up to 991px wide */
+/* --- Medium Devices (Tablets and smaller desktops, roughly 768px to 991px) --- */
 @media (max-width: 991px) {
     /* Adjust general spacing and container padding */
+    .site-wrapper,
     .container {
-        padding: 0 var(--spacing-sm); /* Reduce side padding slightly */
+        padding: 0 var(--spacing-sm); /* Reduce side padding for all containers */
     }
     section {
         padding: var(--spacing-lg) 0; /* Less generous vertical spacing */
@@ -750,14 +1148,41 @@ h3 { font-size: var(--font-size-h3); }
     .nav-links {
         gap: var(--spacing-sm); /* Reduce gap between nav items */
     }
+    .nav-toggle-btn {
+        display: block; /* Show hamburger icon */
+    }
+    .nav-links {
+        display: none; /* Hidden by default on mobile/tablet */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: var(--spacing-md) 0;
+        border-top: 1px solid var(--border-color);
+        animation: slideDown .3s ease-out forwards;
+    }
+    .nav-links.active {
+        display: flex; /* Show when active class is toggled by JS */
+    }
+    .nav-links li {
+        text-align: center;
+        margin: var(--spacing-xs) 0;
+    }
+    .nav-links a {
+        padding: var(--spacing-sm) 0;
+    }
 
-    /* Hero Section */
+
+    /* Hero Section (General Hero, not #home.container) */
     .hero-section {
         min-height: 550px; /* Adjust min-height */
         padding: var(--spacing-xl) 0;
     }
     .hero-section .container {
-        flex-direction: column-reverse; /* Stack content, graphic on top for mobile */
+        flex-direction: column-reverse; /* Stack content, graphic on top for smaller screens */
         text-align: center;
         gap: var(--spacing-md);
     }
@@ -779,11 +1204,28 @@ h3 { font-size: var(--font-size-h3); }
         max-width: 80%; /* Reduce graphic size slightly on smaller tablets */
         margin: 0 auto;
     }
+    /* Specific adjustment for #home.container if it's the hero, though it looks like a card */
+    #home.container {
+        padding: var(--spacing-lg) var(--spacing-md); /* Adjust padding */
+        margin: var(--spacing-md) auto;
+    }
+    .logo-bottom-left {
+        bottom: 2rem;
+        left: 2rem;
+        width: 150px; /* Smaller logo */
+    }
 
-    /* Two-Column Sections */
+
+    /* About Section */
+    .about-section .container {
+        padding: var(--spacing-lg) var(--spacing-md); /* Adjust padding */
+        margin: var(--spacing-md) auto;
+    }
+
+    /* Two-Column Sections (We Help You, Community, FAQ, Contact) */
     .two-column-section .container,
     .faq-section .container,
-    .contact-section .container {
+    .contact-section .contact-container {
         flex-direction: column; /* Stack columns vertically */
         gap: var(--spacing-lg);
     }
@@ -792,23 +1234,31 @@ h3 { font-size: var(--font-size-h3); }
     }
     .two-column-section .content-column,
     .faq-section .content-column,
-    .contact-section .content-column {
-        padding-left: 0; /* Remove specific padding when stacked */
+    .contact-section .contact-details {
+        padding-right: 0; /* Remove specific padding when stacked */
         text-align: center; /* Center text content when stacked */
     }
     .two-column-section h2,
-    .faq-section h2,
-    .contact-section h2 {
+    .faq-section .content-column h2,
+    .contact-section .contact-details h2 {
         text-align: center; /* Center these section titles */
+    }
+    .two-column-section p,
+    .faq-section .section-description,
+    .contact-section .contact-details p {
+        text-align: center; /* Center text content when stacked */
     }
     .two-column-section .btn-primary {
         margin: var(--spacing-sm) auto 0 auto; /* Center button below text */
     }
+    .image-column img {
+        max-width: 70%; /* Adjust image size in two-column sections */
+    }
 
 
-    /* Card Grid */
+    /* Card Grid (Your Path, Resources) */
     .card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 cards per row on tablets, but flexible */
         gap: var(--spacing-md);
     }
     .card {
@@ -818,82 +1268,114 @@ h3 { font-size: var(--font-size-h3); }
         text-align: center;
     }
     .card-icon {
-        margin-left: auto; /* Center icon */
+        margin-left: auto;
         margin-right: auto;
     }
     .card .btn-link {
-        align-self: center; /* Center link */
+        align-self: center;
     }
 
-
-    /* Testimonials Grid */
-    .testimonial-grid {
-        grid-template-columns: 1fr; /* Stack testimonials vertically */
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-    }
-    .testimonial-graphic {
-        order: -1; /* Move graphic to the top */
-        padding-bottom: var(--spacing-sm);
-    }
-    .testimonial-graphic img {
-        max-width: 60%; /* Adjust graphic size */
-    }
-    .testimonial-text {
-        min-height: auto; /* Allow height to adjust */
-        padding: var(--spacing-md);
+    /* Testimonials Section */
+    .testimonial-content {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        align-items: center; /* Center content when stacked */
         text-align: center;
+        gap: var(--spacing-md); /* Adjust gap for stacked layout */
     }
-    .testimonial-text p {
-        padding-top: 0; /* Remove padding if quote mark isn't floating */
+
+    .testimonial-info,
+    .testimonial-cards-wrapper {
+        min-width: unset; /* Remove min-width constraints for full width on small screens */
+        width: 100%; /* Make them take full width */
+        max-width: 500px; /* Optional: Sets a max width for better readability */
+        margin: 0 auto; /* Center them */
     }
-    .testimonial-text::before {
-        font-size: 5rem; /* Smaller quote mark */
-        top: 10px;
-        left: 10px;
-        opacity: 0.05; /* Slightly more visible for smaller screen */
+    .testimonials-section .section-description,
+    .testimonial-info h2 {
+        text-align: center; /* Center text for stacked layout */
+    }
+
+    .testimonial-nav {
+        justify-content: center; /* Center navigation buttons */
+    }
+
+    .testimonial-cards-wrapper {
+        flex-direction: column; /* Stack cards vertically within their wrapper on small screens */
+        align-items: center; /* Center individual cards when stacked */
+        gap: var(--spacing-sm); /* Adjust gap for stacked cards */
+    }
+
+    .testimonial-card {
+        width: 90%; /* Adjust card width for better appearance on small screens */
+        max-width: 400px; /* Max width for individual cards */
     }
     .client-name {
-        text-align: center; /* Center client name */
+        margin-top: 1.5rem; /* Reduce large margin for stacked cards */
     }
 
     /* Partners Section */
-    .partners-section .container {
-        justify-content: center; /* Ensure logos are centered when wrapped */
+    .partner-logos-grid {
+        padding: var(--spacing-md) var(--spacing-sm); /* Adjust padding */
         gap: var(--spacing-sm);
     }
+    .partner-logo {
+        flex: 1 1 100px; /* More aggressive flex-basis for smaller screens */
+        max-width: 120px;
+    }
     .partner-logo img {
-        max-height: 40px; /* Slightly smaller logos */
+        max-height: 40px;
     }
 
-    /* Footer Grid */
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller tablets */
-        gap: var(--spacing-md);
+    /* Footer */
+    .sitemap-and-cta-wrapper {
+        flex-direction: column;
+        padding: 0 var(--spacing-sm);
     }
-    .footer-branding {
-        grid-column: span 2; /* Make branding span both columns */
-        text-align: center;
+
+    .sitemap-links-block,
+    .cta-block {
+        flex: auto;
+        width: 100%;
+        min-width: unset;
+        padding: var(--spacing-md); /* Adjust padding for block */
+    }
+
+    .sitemap-links-block {
         margin-bottom: var(--spacing-md);
     }
-    .footer-logo {
-        text-align: center;
+
+    .sitemap-links-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        text-align: center; /* Center content when stacked */
+        gap: var(--spacing-md);
     }
-    .social-icons {
-        justify-content: center;
-        margin: var(--spacing-sm) auto; /* Center social icons */
+
+    .sitemap-links-section-item {
+        margin-bottom: var(--spacing-sm); /* Space between stacked sections */
     }
-    .footer-section h4 {
-        text-align: center;
+
+    .sitemap-branding .sitemap-logo,
+    .sitemap-branding p,
+    .sitemap-links-section-item h4,
+    .sitemap-links-section-item ul,
+    .sitemap-links-section-item ul li a {
+        text-align: center; /* Center all footer text */
     }
-    .footer-section ul {
-        text-align: center; /* Center footer links */
+
+    .sitemap-links-section-item .social-icons {
+        flex-direction: row; /* Align social icons horizontally */
+        justify-content: center; /* Center social icons */
+        margin: var(--spacing-sm) auto; /* Center with auto margins */
+    }
+
+    .sitemap-copyright {
+        text-align: center; /* Center copyright */
+        padding-top: var(--spacing-sm);
     }
 }
 
 
-/* --- Small Devices (Mobile Phones) --- */
-/* Target screens up to 767px wide (this will override some 991px rules) */
+/* --- Small Devices (Mobile Phones, roughly up to 767px) --- */
 @media (max-width: 767px) {
     /* Adjust Font Sizes for mobile */
     :root {
@@ -915,51 +1397,20 @@ h3 { font-size: var(--font-size-h3); }
     section {
         padding: var(--spacing-xl) 0; /* Adjust vertical spacing */
     }
+    .site-wrapper,
     .container {
         padding: 0 var(--spacing-sm); /* Consistent padding */
     }
 
-    /* Header & Navigation */
+    /* Header & Navigation (mostly inherited from 991px, just refining) */
     .nav-links {
-        display: none; /* Hidden by default on mobile */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--card-bg);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        padding: var(--spacing-md) 0;
-        border-top: 1px solid var(--border-color);
-        animation: slideDown .3s ease-out forwards; /* Simple animation for dropdown */
-    }
-
-    @keyframes slideDown {
-        from { transform: translateY(-100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    .nav-links.active {
-        display: flex; /* Show when active class is toggled by JS */
-    }
-
-    .nav-links li {
-        text-align: center;
-        margin: var(--spacing-xs) 0;
-    }
-
-    .nav-links a {
         padding: var(--spacing-sm) 0;
-    }
-
-    .nav-toggle-btn {
-        display: block; /* Show hamburger icon */
     }
 
     /* Hero Section */
     .hero-section {
         min-height: 450px; /* Even smaller min-height for phones */
-        padding: var(--spacing-xl) 0 var(--spacing-lg) 0; /* More padding on top than bottom */
+        padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
     }
     .hero-graphic img {
         max-width: 90%; /* Adjust graphic size for phone */
@@ -968,30 +1419,28 @@ h3 { font-size: var(--font-size-h3); }
     .hero-buttons {
         flex-direction: column; /* Stack buttons vertically */
         gap: var(--spacing-sm);
-        width: 100%; /* Make buttons full width */
+        width: 100%;
         align-items: center;
     }
     .btn {
         width: 90%; /* Make buttons take up most of the width */
         max-width: 300px; /* Prevent them from getting too wide */
     }
-
+    /* Specific adjustment for #home.container if it's the hero, though it looks like a card */
+    #home.container {
+        padding: var(--spacing-md) var(--spacing-sm);
+        margin: var(--spacing-md) auto;
+    }
+    .logo-bottom-left {
+        bottom: 1rem;
+        left: 1rem;
+        width: 100px; /* Even smaller logo */
+    }
 
     /* Two-Column Sections (already handled by 991px, just reinforcing centering) */
-    .two-column-section h2,
-    .faq-section h2,
-    .contact-section h2 {
-        text-align: center;
-    }
-    .two-column-section p,
-    .faq-section .section-description,
-    .contact-section p {
-        text-align: center;
-    }
     .image-column img {
         max-width: 80%; /* Adjust image size in two-column sections */
     }
-
 
     /* Card Grid */
     .card-grid {
@@ -1002,37 +1451,37 @@ h3 { font-size: var(--font-size-h3); }
         padding: var(--spacing-md) var(--spacing-sm);
     }
 
-
     /* Testimonials Grid */
+    .testimonial-info h2 {
+        font-size: 2rem; /* Slightly smaller for mobile */
+    }
     .testimonial-graphic img {
-        max-width: 80%; /* Adjust graphic size */
+        max-width: 80%;
+    }
+    .testimonial-card {
+        padding: 1.5rem; /* Less padding on small screens */
     }
 
-
     /* Partners Section */
-    .partners-section .container {
+    .partner-logos-grid {
         flex-direction: column; /* Stack logos vertically for very small screens */
         gap: var(--spacing-sm);
     }
+    .partner-logo {
+        flex: none; /* Remove flex behavior to stack them */
+        width: 100%; /* Take full width */
+        max-width: 150px; /* Constrain individual logo width */
+    }
     .partner-logo img {
-        max-height: 35px; /* Smaller logos for mobile */
+        max-height: 35px;
     }
 
-
     /* Footer Grid */
-    .footer-grid {
+    .sitemap-links-grid {
         grid-template-columns: 1fr; /* Single column for footer on mobile */
         gap: var(--spacing-md);
     }
-    .footer-branding {
-        grid-column: auto; /* Reset grid-column */
-        text-align: center;
-    }
-    .footer-section h4,
-    .footer-section ul {
-        text-align: center;
-    }
-    .social-icons {
-        justify-content: center;
+    .sitemap-links-section-item .social-icons {
+        flex-direction: row; /* Keep horizontal, but centered */
     }
 }
